@@ -1,34 +1,24 @@
 <?php
 
 return [
-    // coba dulu
-    /*
-    |--------------------------------------------------------------------------
-    | Cross-Origin Resource Sharing (CORS) Configuration
-    |--------------------------------------------------------------------------
-    |
-    | Di sini kita nge-set siapa aja yang boleh akses API kita dari origin lain.
-    | Vercel (produksi) dan localhost (dev) harus di-allow.
-    |
-    */
 
-    'paths' => ['api/*', 'login', 'logout', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie'], // penting: pastiin login & auth route termasuk
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['*'], // allow GET, POST, OPTIONS, PUT, DELETE, etc
 
-    'allowed_origins' => [
-        'http://localhost:5173', // buat development lokal (Vite)
-        'https://web-bps-frontend-sepia.vercel.app', // domain Vercel (production)
+    'allowed_origins' => [], // dikosongin karena kita pakai regex di patterns
+
+    'allowed_origins_patterns' => [
+        '^https:\/\/.*\.vercel\.app$',      // semua subdomain vercel
+        '^https:\/\/.*\.dnmgroup\.my\.id$', // semua subdomain custom domain (kalau lo pake)
+        '^http:\/\/localhost:\d+$',         // buat dev lokal: localhost:5173 dll
     ],
 
-    'allowed_origins_patterns' => [],
-
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['*'], // biar semua header termasuk Authorization masuk
 
     'exposed_headers' => [],
 
     'max_age' => 0,
 
     'supports_credentials' => true,
-
 ];
