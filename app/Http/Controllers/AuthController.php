@@ -33,6 +33,6 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'So saadd, kamu berhasil logout dan tokennya sudah dihapus.'
-        ]);
+        ], 200);
     }
 }
