@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    // coba dulu
     /*
     |--------------------------------------------------------------------------
     | Cross-Origin Resource Sharing (CORS) Configuration
