@@ -16,18 +16,6 @@ use App\Http\Controllers\PublikasiController;
 |
 */
 
-Route::options('/{any}', function () {
-    return response('', 204)
-        ->header('Access-Control-Allow-Origin', '*')
-        ->header('Access-Control-Allow-Credentials', 'true')
-        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-        ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
-})->where('any', '.*');
-
-Route::get('/ping', function () {
-    return response()->json(['pong' => true]);
-});
-
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
